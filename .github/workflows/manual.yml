@@ -1,0 +1,16 @@
+name: Convert PPT to PDF
+
+on:
+  workflow_dispatch:
+
+jobs:
+  install:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Runs a single command using the runners shell
+    - name: Install LibreOffice
+      run: sudo apt-get install -y libreoffice
+    - name: Convert PPT
+      run: libreoffice --headless --invisible --convert-to pdf .\PPT\*.ppt  --outdir .\PDF
